@@ -8,13 +8,13 @@ dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem("Scatter Plot", tabName = "scatter", icon = icon("dashboard")),
+      menuItem("Barchart", tabName = "barchart", icon = icon("th")),
       menuItem("Crosstab", tabName = "crosstab", icon = icon("th"))
     )
   ),
   dashboardBody(
     tabItems(
       tabItem(tabName = "scatter",
-              actionButton(inputId = "clicks1",  label = "Click me"),
               plotOutput("scatterPlot")
               
       )
