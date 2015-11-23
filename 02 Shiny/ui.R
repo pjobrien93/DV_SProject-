@@ -17,8 +17,8 @@ dashboardPage(
       tabItem(tabName = "scatter",
               plotOutput("scatterPlot")
               
-      )
-  #    tabItem(tabName = "crosstab"),
+      ),
+      tabItem(tabName = "crosstab",
   #            sidebarPanel(
   #              actionButton(inputId = "light", label = "Light"),
   #              actionButton(inputId = "dark", label = "Dark"),
@@ -31,8 +31,9 @@ dashboardPage(
   #                        value = "Crosstab"),
   #              actionButton(inputId = "clicks2",  label = "Click me"),
   #            ),
-  #           plotOutput("crosstab")
+            plotOutput("crosstab")
     )
   )
+)
 )
 
