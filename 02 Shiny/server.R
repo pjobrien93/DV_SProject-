@@ -48,13 +48,10 @@ shinyServer(function(input, output) {
     
     KPI_Low_Max_value = 0.0018     
     KPI_Medium_Max_value = 0.01
-    rv <- reactiveValues(alpha = 0.50)
-    observeEvent(input$light, { rv$alpha <- 0.50 })
-    observeEvent(input$dark, { rv$alpha <- 0.75 })
     
     df1 <- crimes %>% group_by(INSTNM) %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", TOTAL != "null")
     
-    df1$LIQUOR12 <- as.numeric(as.character(df1$LIQUOR12))
+    df1$LIQUOR1 <- as.numeric(as.character(df1$LIQUOR12))
     df1$DRUG12 <- as.numeric(as.character(df1$DRUG12))
     df1$WEAPON12 <- as.numeric(as.character(df1$WEAPON12))
     df1$TOTAL <- as.numeric(as.character(df1$TOTAL))

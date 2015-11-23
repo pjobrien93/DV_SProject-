@@ -15,7 +15,6 @@ dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "scatter",
-              actionButton("ScatterPlot", "Generate Plot"),
               plotOutput("scatterPlot")
               
       ),
