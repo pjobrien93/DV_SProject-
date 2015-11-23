@@ -16,7 +16,10 @@ dashboardPage(
     tabItems(
       tabItem(tabName = "scatter",
               plotOutput("scatterPlot")
-              
+      ),
+      tabItem(tabName = "barchart",
+              plotOutput("barChart")
+        
       ),
       tabItem(tabName = "crosstab",
   #            sidebarPanel(
@@ -36,4 +39,3 @@ dashboardPage(
   )
 )
 )
-
