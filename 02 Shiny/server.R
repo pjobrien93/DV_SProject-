@@ -65,7 +65,7 @@ shinyServer(function(input, output) {
     
     df2 <- crimes %>% group_by(INSTNM) %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", TOTAL != "null")
     
-    df2$LIQUOR1 <- as.numeric(as.character(df2$LIQUOR12))
+    df2$LIQUOR12 <- as.numeric(as.character(df2$LIQUOR12))
     df2$DRUG12 <- as.numeric(as.character(df2$DRUG12))
     df2$WEAPON12 <- as.numeric(as.character(df2$WEAPON12))
     df2$TOTAL <- as.numeric(as.character(df2$TOTAL))
