@@ -11,6 +11,9 @@ shinyServer(function(input, output) {
       
       KPI_Low_Max_value = 0.0018     
       KPI_Medium_Max_value = 0.01
+      rv <- reactiveValues(alpha = 0.50)
+      observeEvent(input$light, { rv$alpha <- 0.50 })
+      observeEvent(input$dark, { rv$alpha <- 0.75 })
       
       df <- df %>% group_by(INSTNM) %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", TOTAL != "null")
       
