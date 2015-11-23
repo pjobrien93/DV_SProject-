@@ -3,18 +3,19 @@ require(shinydashboard)
 require(leaflet)
 
 dashboardPage(
-  dashboardHeader(
+  dashboardHeader(title = "Project 6: EResidence Hall Crime Data"
   ),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Scatter Plot", tabName = "scatter", icon = icon("dashboard")),
-      menuItem("Barchart", tabName = "barchart", icon = icon("th")),
+      menuItem("Scatter Plot", tabName = "scatter", icon = icon("th")),
+      menuItem("Barchart", tabName = "barchart", icon = icon("bar-chart")),
       menuItem("Crosstab", tabName = "crosstab", icon = icon("th"))
     )
   ),
   dashboardBody(
     tabItems(
       tabItem(tabName = "scatter",
+              actionButton("ScatterPlot", "Generate Plot"),
               plotOutput("scatterPlot")
               
       ),

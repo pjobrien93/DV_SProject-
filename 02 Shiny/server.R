@@ -9,10 +9,10 @@ require(leaflet)
 require(DT)
 
 shinyServer(function(input, output) {
-  df <- data.frame(fromJSON(getURL(URLencode('skipper.cs.utexas.edu:5001/rest/native/?query="select INSTNM , LIQUOR12, DRUG12, WEAPON12, MEN_TOTAL, TOTAL from RESIDENCEHALLARREST2013"'),httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_pjo293', PASS='orcl_pjo293', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
-  
+    crimes <- data.frame(fromJSON(getURL(URLencode('skipper.cs.utexas.edu:5001/rest/native/?query="select INSTNM , LIQUOR12, DRUG12, WEAPON12, MEN_TOTAL, TOTAL from RESIDENCEHALLARREST2013"'),
+                                         httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_pjo293', PASS='orcl_pjo293', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
   output$scatterPlot <- renderPlot({
-    df <- df %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", MEN_TOTAL != "null", TOTAL!="null")
+    df <- crimes %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", MEN_TOTAL != "null", TOTAL!="null")
     
     #df$MEN_TOTAL <- as.numeric(as.character(df$MEN_TOTAL))
     df$LIQUOR12 <- as.numeric(as.character(df$LIQUOR12))
@@ -40,11 +40,11 @@ shinyServer(function(input, output) {
             
       )+ 
       geom_hline(yintercept=avg_crimeRate)
+  
+  return(plot)
   }) 
 
-  df1 <- data.frame(fromJSON(getURL(URLencode('skipper.cs.utexas.edu:5001/rest/native/?query="select * from RESIDENCEHALLARREST2013"'),httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_pjo293', PASS='orcl_pjo293', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
-  
-  output$crosstab({renderPlot({
+  output$crosstab <- ({renderPlot({
     
     KPI_Low_Max_value = 0.0018     
     KPI_Medium_Max_value = 0.01
@@ -52,7 +52,7 @@ shinyServer(function(input, output) {
     observeEvent(input$light, { rv$alpha <- 0.50 })
     observeEvent(input$dark, { rv$alpha <- 0.75 })
     
-    df1 <- df1 %>% group_by(INSTNM) %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", TOTAL != "null")
+    df1 <- crimes %>% group_by(INSTNM) %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", TOTAL != "null")
     
     df1$LIQUOR12 <- as.numeric(as.character(df1$LIQUOR12))
     df1$DRUG12 <- as.numeric(as.character(df1$DRUG12))
