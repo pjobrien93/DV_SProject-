@@ -1,0 +1,13 @@
+---
+title: "Data Visualization R Project6"
+output: html_document
+---
+  
+  ##Mohammad Chauhan & Patricia O'Brien
+  
+  
+Link to our dashboard: 
+  
+https://pjobrien.shinyapps.io/project6
+
+In order to make our shiny app, we created a dashboard page with the built functions from the shiny and shinydashboard packages. We made two files: ui.R and server.R. The ui.R file is what the user sees and the server.R file is what the server reads to make the graph and then sends it to the ui.R file. In the ui.R file, we created a sidebar menu item so the user can toggle between graphs. When then populated the tabs with the plots from project 5 with the plotOutput function. In our server.R file, we created the graphs in the shinyServer function and made sure each graph had the same name from the ui.R file. We copied the R scripts from project 5 that created the three graphs into the server.R script. This created our graphs in R so they could be sent to the shiny server. 
