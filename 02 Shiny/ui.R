@@ -3,7 +3,7 @@ require(shinydashboard)
 require(leaflet)
 
 dashboardPage(
-  dashboardHeader(title = "Project 6: Residence Hall Crime Data", titleWidth = 350
+  dashboardHeader(title = "Project 6: Residence Hall Crime Data", titleWidth = 450
   ),
   dashboardSidebar(
     sidebarMenu(

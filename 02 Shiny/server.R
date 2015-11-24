@@ -10,8 +10,8 @@ require(leaflet)
 require(DT)
 
 shinyServer(function(input, output) {
-    crimes <- data.frame(fromJSON(getURL(URLencode('skipper.cs.utexas.edu:5001/rest/native/?query="select INSTNM , LIQUOR12, DRUG12, WEAPON12, MEN_TOTAL, TOTAL from RESIDENCEHALLARREST2013"'),
-                                         httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_pjo293', PASS='orcl_pjo293', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
+    crimes <- data.frame(fromJSON(getURL(URLencode('skipper.cs.utexas.edu:5001/rest/native/?query="select * from RESIDENCEHALLARREST2013"'),httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_pjo293', PASS='orcl_pjo293', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
+  
   output$scatterPlot <- renderPlot({
     df <- crimes %>% filter(LIQUOR12 != "null", DRUG12 != "null", WEAPON12 != "null", MEN_TOTAL != "null", TOTAL!="null")
     
